@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1a365d;
+  --color-primary-light: #2a4a7f;
+  --color-primary-dark: #0f2440;
+  --color-accent: #c53030;
+  --color-accent-light: #e53e3e;
+  --color-cream: #fffbf0;
+  --color-parchment: #f7f3e9;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  .petition-letter {
+    page-break-after: always;
+    padding: 1in;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+  }
+}
