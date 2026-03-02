@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Merriweather, Source_Sans_3 } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const merriweather = Merriweather({
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={`${merriweather.variable} ${sourceSans.variable} antialiased`}
       >
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
