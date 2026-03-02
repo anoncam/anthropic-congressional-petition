@@ -158,11 +158,11 @@ export default function Home() {
                 <div className="bg-white/60 rounded-lg p-4">
                   <h3 className="text-sm font-bold text-amber-900 mb-3">Key Issues for Congress</h3>
                   <ul className="space-y-1.5 text-sm text-amber-800">
-                    <li className="flex gap-2"><span className="text-amber-600 shrink-0">1.</span> The DoW demanded AI capable of <strong>killing without human oversight</strong> — fully autonomous lethal weapons systems.</li>
-                    <li className="flex gap-2"><span className="text-amber-600 shrink-0">2.</span> The DoW demanded AI for <strong>mass domestic surveillance</strong> of US citizens at scale.</li>
-                    <li className="flex gap-2"><span className="text-amber-600 shrink-0">3.</span> When Anthropic refused on ethical grounds, the executive branch <strong>retaliated through procurement bans</strong> — a potential abuse of power.</li>
-                    <li className="flex gap-2"><span className="text-amber-600 shrink-0">4.</span> Replacement contracts were awarded to <strong>competitors willing to comply</strong>, incentivizing a race to the bottom on AI safety.</li>
-                    <li className="flex gap-2"><span className="text-amber-600 shrink-0">5.</span> Congress has <strong>constitutional oversight authority</strong> over the Department of War that is not being exercised.</li>
+                    <li className="flex gap-2"><span className="text-amber-600 shrink-0">1.</span><span>The DoW demanded AI capable of <strong>killing without human oversight</strong> — fully autonomous lethal weapons systems.</span></li>
+                    <li className="flex gap-2"><span className="text-amber-600 shrink-0">2.</span><span>The DoW demanded AI for <strong>mass domestic surveillance</strong> of US citizens at scale.</span></li>
+                    <li className="flex gap-2"><span className="text-amber-600 shrink-0">3.</span><span>When Anthropic refused on ethical grounds, the executive branch <strong>retaliated through procurement bans</strong> — a potential abuse of power.</span></li>
+                    <li className="flex gap-2"><span className="text-amber-600 shrink-0">4.</span><span>Replacement contracts were awarded to <strong>competitors willing to comply</strong>, incentivizing a race to the bottom on AI safety.</span></li>
+                    <li className="flex gap-2"><span className="text-amber-600 shrink-0">5.</span><span>Congress has <strong>constitutional oversight authority</strong> over the Department of War that is not being exercised.</span></li>
                   </ul>
                 </div>
 
