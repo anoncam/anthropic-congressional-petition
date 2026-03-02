@@ -2,7 +2,7 @@
 
 A web application that helps US citizens generate personalized petition letters to their members of Congress regarding the Department of War's February 2026 actions against Anthropic.
 
-**Live at:** [petition-app-omega.vercel.app](https://petition-app-omega.vercel.app)
+**Live at:** [petition.usa.dev](https://petition.usa.dev)
 
 ## Background
 
