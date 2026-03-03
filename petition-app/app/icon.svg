@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Red and white stripes -->
+  <rect width="32" height="32" fill="#B22234"/>
+  <rect y="4.92" width="32" height="2.46" fill="#FFFFFF"/>
+  <rect y="9.85" width="32" height="2.46" fill="#FFFFFF"/>
+  <rect y="14.77" width="32" height="2.46" fill="#FFFFFF"/>
+  <rect y="19.69" width="32" height="2.46" fill="#FFFFFF"/>
+  <rect y="24.62" width="32" height="2.46" fill="#FFFFFF"/>
+  <rect y="29.54" width="32" height="2.46" fill="#FFFFFF"/>
+  <!-- Blue canton -->
+  <rect width="14" height="17.23" fill="#3C3B6E"/>
+  <!-- Stars (simplified 3x3 grid for favicon clarity) -->
+  <g fill="#FFFFFF">
+    <circle cx="3" cy="3" r="1.1"/>
+    <circle cx="7" cy="3" r="1.1"/>
+    <circle cx="11" cy="3" r="1.1"/>
+    <circle cx="5" cy="5.8" r="1.1"/>
+    <circle cx="9" cy="5.8" r="1.1"/>
+    <circle cx="3" cy="8.6" r="1.1"/>
+    <circle cx="7" cy="8.6" r="1.1"/>
+    <circle cx="11" cy="8.6" r="1.1"/>
+    <circle cx="5" cy="11.4" r="1.1"/>
+    <circle cx="9" cy="11.4" r="1.1"/>
+    <circle cx="3" cy="14.2" r="1.1"/>
+    <circle cx="7" cy="14.2" r="1.1"/>
+    <circle cx="11" cy="14.2" r="1.1"/>
+  </g>
+</svg>
