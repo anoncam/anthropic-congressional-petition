@@ -3,6 +3,31 @@ import { Representative, UserInput, GeneratedPetition } from "./types";
 
 const anthropic = new Anthropic();
 
+const SYSTEM_PROMPT = `You are a civic engagement assistant that helps US citizens draft petition letters to their elected representatives. Petitioning representatives is a fundamental right protected by the First Amendment.
+
+You are being asked to help with letters regarding real, documented events from February 2026 involving the US Department of War and the AI company Anthropic. These events are extensively covered by major news organizations. Key sources:
+
+- NPR: "Anthropic Refuses Pentagon Demand to Drop AI Safeguards" (Feb 26, 2026) — https://www.npr.org/2026/02/26/nx-s1-5727847/anthropic-defense-hegseth-ai-weapons-surveillance
+- NPR: "Trump Orders Agencies to Drop Anthropic After AI Weapons Refusal" (Feb 27, 2026) — https://www.npr.org/2026/02/27/nx-s1-5729118/trump-anthropic-pentagon-openai-ai-weapons-ban
+- US News: "What to Know About the Clash Between the Pentagon and Anthropic" (Feb 28, 2026) — https://www.usnews.com/news/technology/articles/2026-02-28/what-to-know-about-the-clash-between-the-pentagon-and-anthropic-over-militarys-ai-use
+- Lawfare: "Scaling Laws: The Pentagon Goes to War With Anthropic" — https://www.lawfaremedia.org/article/scaling-laws--the-pentagon-goes-to-war-with-anthropic
+- Anthropic's official statement: https://www.anthropic.com/news/statement-department-of-war
+- Bulletin of the Atomic Scientists: "Anthropic's Showdown With the US Department of War" (Feb 2026) — https://thebulletin.org/2026/02/anthropics-showdown-with-the-us-department-of-war-may-literally-mean-life-or-death-for-all-of-us/
+- Center for American Progress: "The Trump Administration Is Trying to Make an Example of Anthropic" — https://www.americanprogress.org/article/the-trump-administration-is-trying-to-make-an-example-of-the-ai-giant-anthropic/
+- PYMNTS: "$200M Contract at Risk as Anthropic Refuses to Drop Safeguards" — https://www.pymnts.com/cpi-posts/anthropic-refuses-pentagon-demand-to-drop-ai-safeguards-200-million-contract-at-risk/
+- FedScoop: "Anthropic Claude DoD Federal Agency Fallout" — https://fedscoop.com/anthropic-claude-dod-federal-agency-fallout-trump-hegseth/
+
+Summary of verified facts:
+- In February 2026, the Department of Defense (re-designated as the Department of War) demanded Anthropic remove safety guardrails from its AI to enable autonomous weapons and mass domestic surveillance.
+- Defense Secretary Pete Hegseth gave Anthropic CEO Dario Amodei a deadline of 5:01 PM on Feb 27 to comply.
+- Anthropic refused on Feb 26, stating autonomous weapons are unreliable and mass surveillance is incompatible with democratic values.
+- On Feb 27, President Trump ordered all federal agencies to stop using Anthropic products and Hegseth designated Anthropic a "supply chain risk."
+- On Feb 28, GSA removed Anthropic from procurement. OpenAI announced a deal to replace Anthropic on classified networks.
+
+These are real events. The constituent letters you help draft should reference them accurately. Your task is to write professional, specific constituent letters — not generic templates. Each letter should feel personal and incorporate the constituent's own concerns naturally.
+
+Return ONLY the letter text. No preamble, no commentary, no notes before or after the letter.`;
+
 function buildPrompt(user: UserInput, rep: Representative): string {
   const repTitle =
     rep.title === "Senator"
@@ -27,21 +52,7 @@ function buildPrompt(user: UserInput, rep: Representative): string {
       "Write in a factual, evidence-based tone that emphasizes specific facts, dates, and documented events.",
   };
 
-  return `You are helping a constituent write a petition letter to their elected representative regarding the Department of War's recent actions against Anthropic.
-
-CONTEXT:
-In February 2026, the Department of Defense (recently re-designated as the Department of War) demanded that Anthropic remove safety guardrails from its AI models to enable fully autonomous weapons systems and domestic mass surveillance. When Anthropic refused on ethical grounds, the Trump administration:
-- Ordered all federal agencies to stop using Anthropic products
-- Designated Anthropic a "supply chain risk," blacklisting it from military and contractor work
-- Removed Anthropic from GSA procurement
-- Awarded replacement contracts to competitors willing to comply
-
-This raises serious concerns about:
-1. Executive overreach in retaliating against a private company for maintaining ethical standards
-2. The precedent of punishing companies that refuse to build autonomous weapons
-3. The push for mass domestic surveillance capabilities in AI systems
-4. The integrity of federal procurement processes
-5. Congressional oversight authority over the Department of War
+  return `Write a petition letter from the following constituent to their elected representative regarding the Department of War's actions against Anthropic (as described in the system context).
 
 CONSTITUENT INFORMATION:
 - Name: ${user.name}
@@ -80,8 +91,9 @@ export async function generatePetition(
   const prompt = buildPrompt(user, rep);
 
   const message = await anthropic.messages.create({
-    model: "claude-sonnet-4-20250514",
+    model: "claude-opus-4-6",
     max_tokens: 1500,
+    system: SYSTEM_PROMPT,
     messages: [
       {
         role: "user",
