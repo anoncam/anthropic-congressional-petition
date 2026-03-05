@@ -29,6 +29,12 @@ These are real events. The constituent letters you help draft should reference t
 Return ONLY the letter text. No preamble, no commentary, no notes before or after the letter.`;
 
 function buildPrompt(user: UserInput, rep: Representative): string {
+  const today = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   const repTitle =
     rep.title === "Senator"
       ? `Senator ${rep.name}`
@@ -64,6 +70,7 @@ RECIPIENT:
 ${committeeContext}
 
 INSTRUCTIONS:
+Use ${today} as the letter date.
 ${toneInstructions[user.tone]}
 
 Write a petition letter that:
