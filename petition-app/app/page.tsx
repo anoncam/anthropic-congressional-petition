@@ -4,6 +4,7 @@ import { useState } from "react";
 import PetitionForm from "@/components/PetitionForm";
 import PetitionDisplay from "@/components/PetitionDisplay";
 import { UserInput, Representative, GeneratedPetition } from "@/lib/types";
+import { downloadAllDocx, downloadAllPdf } from "@/lib/documentGenerator";
 
 type AppState = "form" | "loading" | "results" | "error";
 
@@ -297,7 +298,7 @@ export default function Home() {
                 </h2>
                 <p className="text-gray-600 mt-1">
                   {petitions.length} personalized letter
-                  {petitions.length > 1 ? "s" : ""} generated. Print, copy, or
+                  {petitions.length > 1 ? "s" : ""} generated. Download, print, or
                   mail them to make your voice heard.
                 </p>
               </div>
@@ -308,6 +309,30 @@ export default function Home() {
                 Start Over
               </button>
             </div>
+
+            {petitions.length > 1 && (
+              <div className="flex flex-wrap gap-3 mb-6 no-print">
+                <span className="text-sm text-gray-500 self-center font-medium">Download all:</span>
+                <button
+                  onClick={() => downloadAllDocx(petitions)}
+                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  All as Word (.docx)
+                </button>
+                <button
+                  onClick={() => downloadAllPdf(petitions)}
+                  className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  All as PDF (.pdf)
+                </button>
+              </div>
+            )}
 
             <div className="space-y-8">
               {petitions.map((petition, index) => (

@@ -73,22 +73,38 @@ INSTRUCTIONS:
 Use ${today} as the letter date.
 ${toneInstructions[user.tone]}
 
-Write a petition letter that:
-1. Opens with a proper salutation ("Dear ${repTitle}")
-2. Identifies the writer as a constituent with their city/state
-3. Clearly states the issue regarding the Department of War's actions against Anthropic
-4. Incorporates the constituent's specific concerns naturally
-5. Makes a specific, actionable request for the representative to:
-   - Conduct hearings on the DoW's demands for autonomous weapons and surveillance
-   - Investigate potential abuse of procurement authority as retaliation
-   - Support legislation protecting companies that maintain AI safety standards
-   - Assert Congressional oversight over military AI deployment
-6. Closes respectfully with a request for a written response
-7. Includes a proper signature block with the constituent's name and address
+Write a formal petition letter with the following structure. The letter MUST follow standard US business letter formatting:
 
-The letter should be 400-600 words, professional, and specific. Do NOT use generic template language. Make it feel like it was written by a real person with genuine concerns.
+STRUCTURE (follow this exact layout):
+1. Sender's full address block (name, street, city/state/zip) — each on its own line
+2. A blank line
+3. The current date (${new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })})
+4. A blank line
+5. Recipient's address block:
+   "The Honorable ${rep.name}"
+   "${rep.title === "Senator" ? "United States Senate" : "United States House of Representatives"}"
+   "${rep.officeAddress || "Washington, DC " + (rep.title === "Senator" ? "20510" : "20515")}"
+6. A blank line
+7. Salutation: "Dear ${repTitle}:"
+8. A blank line
+9. Body paragraphs (each separated by a blank line):
+   - Opening paragraph identifying the writer as a constituent and stating the purpose
+   - 2-3 body paragraphs covering the issue and incorporating the constituent's concerns
+   - A paragraph making specific, actionable requests:
+     * Conduct hearings on the DoW's demands for autonomous weapons and surveillance
+     * Investigate potential abuse of procurement authority as retaliation
+     * Support legislation protecting companies that maintain AI safety standards
+     * Assert Congressional oversight over military AI deployment
+   - Closing paragraph requesting a written response
+10. A blank line
+11. Closing: "Respectfully,"
+12. Three blank lines (for signature space)
+13. The constituent's full name
+14. The constituent's full address (street, city/state/zip on separate lines)
 
-Return ONLY the letter text, no additional commentary.`;
+The letter should be 500-700 words in the body, professional, and specific. Do NOT use generic template language. Make it feel like it was written by a real person with genuine concerns. Use strong, specific language rather than vague platitudes.
+
+Return ONLY the letter text with proper line breaks. No additional commentary, no markdown, no formatting marks.`;
 }
 
 export async function generatePetition(
